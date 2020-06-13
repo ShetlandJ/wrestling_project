@@ -1,30 +1,32 @@
-import 'es6-promise/auto'
-import axios from 'axios'
-import './bootstrap'
 import Vue from 'vue'
-import VueAuth from '@websanova/vue-auth'
-import VueAxios from 'vue-axios'
-import VueRouter from 'vue-router'
-import Index from './Index'
-import auth from './auth'
+import App from './App.vue'
 import router from './router'
+import store from './store/store'
+import axios from 'axios'
+import { BootstrapVue } from 'bootstrap-vue';
 
-// Set Vue globally
-window.Vue = Vue
+Vue.config.productionTip = false
 
-// Set Vue router
-Vue.router = router
-Vue.use(VueRouter)
+Vue.use(BootstrapVue);
 
-// Set Vue authentication
-Vue.use(VueAxios, axios)
-axios.defaults.baseURL = `${process.env.MIX_APP_URL}/api`
-Vue.use(VueAuth, auth)
-
-// Load Index
-Vue.component('index', Index)
-
-const app = new Vue({
-  el: '#app',
-  router
-});
+new Vue({
+  router,
+  store,
+  created () {
+    const userInfo = localStorage.getItem('user')
+    if (userInfo) {
+      const userData = JSON.parse(userInfo)
+      this.$store.commit('setUserData', userData)
+    }
+    axios.interceptors.response.use(
+      response => response,
+      error => {
+        if (error.response.status === 401) {
+          this.$store.dispatch('logout')
+        }
+        return Promise.reject(error)
+      }
+    )
+  },
+  render: h => h(App)
+}).$mount('#app')
