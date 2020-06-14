@@ -1,47 +1,16 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import axios from 'axios'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-Vue.use(Vuex)
+import auth from './auth';
+import promotion from './promotion';
 
-axios.defaults.baseURL = 'http://localhost:8000/api'
+Vue.use(Vuex);
 
-export default new Vuex.Store({
-    state: {
-        user: null
-    },
+const modules = {
+    auth,
+    promotion,
+};
 
-    mutations: {
-        setUserData(state, userData) {
-            state.user = userData
-            localStorage.setItem('user', JSON.stringify(userData))
-            axios.defaults.headers.common.Authorization = `Bearer ${userData.token}`
-        },
+const store = new Vuex.Store({ modules });
 
-        clearUserData() {
-            localStorage.removeItem('user')
-            location.reload()
-        }
-    },
-
-    actions: {
-        login({ commit }, credentials) {
-            return axios
-                .post('/auth/login', credentials)
-                .then(({ data }) => {
-                    commit('setUserData', data)
-                })
-        },
-        logout({ commit }) {
-            commit('clearUserData')
-        },
-        register({ commit }, credentials) {
-            return axios
-                .post('/auth/register', credentials)
-        },
-    },
-
-    getters: {
-        isLogged: state => !!state.user
-    }
-})
+export default store;

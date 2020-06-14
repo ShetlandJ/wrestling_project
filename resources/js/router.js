@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from './views/Home.vue'
 import authRoutes from './routes/auth-routes';
 import generalRoutes from './routes/general-routes';
+import promotionRoutes from './routes/promotion-routes';
 
 Vue.use(VueRouter)
 
@@ -11,7 +12,8 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes: [
     ...authRoutes,
-    ...generalRoutes
+    ...generalRoutes,
+    ...promotionRoutes
   ],
 })
 

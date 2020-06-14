@@ -109,9 +109,10 @@ class AddInitialTables extends Migration
             $table->bigInteger('wrestler_id')->unsigned()->nullable();
             $table->bigInteger('state_id')->unsigned()->nullable();
             $table->string('title')->nullable();
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->dateTime('start')->nullable();
             $table->dateTime('end')->nullable();
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }
