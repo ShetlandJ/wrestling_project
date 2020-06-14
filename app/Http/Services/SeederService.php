@@ -44,7 +44,9 @@ class SeederService {
         $wwe->uuid = (string) Uuid::uuid4();
         $wwe->name = "World Wrestling Entertainment";
         $wwe->alias = "WWE";
-
+        $wwe->active = true;
+        $wwe->founded = 1980;
+        $wwe->description = 'WWE is the largest global professional wrestling organisation. Previously known as WWWF and WWF, the WWE runs weekly shows through its two main products, RAW and Smackdown.';
         $wwe->save();
     }
 

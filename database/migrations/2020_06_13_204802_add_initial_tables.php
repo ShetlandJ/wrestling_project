@@ -46,6 +46,8 @@ class AddInitialTables extends Migration
             $table->bigIncrements('id')->unsigned();
             $table->uuid('uuid');
             $table->string('name')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('image_url')->nullable();
             $table->string('alias')->nullable();
             $table->string('founded')->nullable();
             $table->string('active')->nullable();

@@ -25,6 +25,6 @@ export default {
     },
     getters: {
         promotions: state => state.promotions.data,
-        findByAlias: state => name => state.promotions.data.find(record => record.alias.toLowerCase() === name.toLowerCase()) || [],
+        findByAlias: state => name => state.promotions.data.find(record => record.alias.toLowerCase() === name.toLowerCase()) || {},
     }
 };

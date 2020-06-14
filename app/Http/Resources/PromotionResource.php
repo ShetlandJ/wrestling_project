@@ -12,6 +12,7 @@ class PromotionResource extends BaseResource
         return [
             'id' => $promotion->uuid,
             'name' => $promotion->name,
+            'description' => $promotion->description,
             'alias' => $promotion->alias,
             'founded' => $promotion->founded,
             'active' => $promotion->active,

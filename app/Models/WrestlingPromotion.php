@@ -11,4 +11,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class WrestlingPromotion extends Model
 {
     protected $table = 'wrestling_promotions';
+
+    protected $casts = [
+        'active' => 'boolean',
+    ];
 }
