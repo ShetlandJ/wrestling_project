@@ -42,7 +42,7 @@ class SeederService {
     {
         $wwe = new WrestlingPromotion();
         $wwe->uuid = (string) Uuid::uuid4();
-        $wwe->name = "World Wrestling Entertianment";
+        $wwe->name = "World Wrestling Entertainment";
         $wwe->alias = "WWE";
 
         $wwe->save();

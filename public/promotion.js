@@ -13,7 +13,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  computed: {
+    promotion: function promotion() {
+      return this.$store.getters['promotion/findByAlias'](this.$route.params.alias);
+    }
+  }
+});
 
 /***/ }),
 
@@ -32,7 +38,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "james" }, [_vm._v("James")])
+  return _c("div", { staticClass: "james" }, [_vm._v(_vm._s(_vm.promotion))])
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -6,15 +6,21 @@
                     <router-link to="/">Home</router-link>
                 </b-nav-item>
 
-
                 <b-nav-item disabled>
                     <span class="white">|</span>
                 </b-nav-item>
 
-                <b-nav-item href="#">
+                <b-nav-item href="#" v-for="promotion in promotions" :key="promotion.id">
                     <router-link
-                        :to="{ name: 'promotion.page', params: { promotionName: 'wwe'} }"
-                    >WWE</router-link>
+                        :key="promotion.id"
+                        :to="{
+                            name: 'promotion.page',
+                            params: {
+                                alias: promotion.alias,
+                                id: promotion.id
+                            }
+                        }"
+                    >{{promotion.alias}}</router-link>
                 </b-nav-item>
             </b-navbar-nav>
 
@@ -35,11 +41,18 @@ import { mapGetters } from "vuex";
 
 export default {
     computed: {
-        ...mapGetters(["isLogged"])
+        ...mapGetters("auth", ["isLogged"]),
+        ...mapGetters("promotion", ["promotions"]),
+        promotions() {
+            return this.$store.getters["promotion/promotions"].data;
+        }
+    },
+    created() {
+        this.$store.dispatch("promotion/getPromotions");
     },
     methods: {
         logout() {
-            this.$store.dispatch("logout");
+            this.$store.dispatch("auth/logout");
         }
     }
 };

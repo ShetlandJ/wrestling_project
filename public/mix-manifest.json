@@ -1,8 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/login.js": "/login.js",
-    "/register.js": "/register.js",
     "/about.js": "/about.js",
-    "/promotion.js": "/promotion.js"
+    "/login.js": "/login.js",
+    "/promotion.js": "/promotion.js",
+    "/register.js": "/register.js"
 }

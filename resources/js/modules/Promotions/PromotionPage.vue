@@ -1,9 +1,15 @@
 <template>
-    <div class="james">James</div>
+    <div class="james">{{promotion}}</div>
 </template>
 
 <script>
-export default {};
+export default {
+    computed: {
+        promotion() {
+            return this.$store.getters['promotion/findByAlias'](this.$route.params.alias)
+        },
+    },
+};
 </script>
 
 <style>

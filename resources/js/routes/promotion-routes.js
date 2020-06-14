@@ -5,7 +5,7 @@ Vue.use(VueRouter)
 
 const promotionRouter = [
   {
-    path: '/promotion/:promotionName',
+    path: '/promotion/:alias',
     name: 'promotion.page',
     component: () => import(/* webpackChunkName: "promotion" */ '../modules/Promotions/PromotionPage.vue')
   },
