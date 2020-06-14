@@ -10,17 +10,10 @@
                     <span class="white">|</span>
                 </b-nav-item>
 
-                <b-nav-item href="#" v-for="promotion in promotions" :key="promotion.id">
+                <b-nav-item href="#">
                     <router-link
-                        :key="promotion.id"
-                        :to="{
-                            name: 'promotion.page',
-                            params: {
-                                alias: promotion.alias,
-                                id: promotion.id
-                            }
-                        }"
-                    >{{promotion.alias}}</router-link>
+                        :to="{ name: 'promotions' }"
+                    >Promotions</router-link>
                 </b-nav-item>
             </b-navbar-nav>
 
@@ -58,7 +51,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 a {
     color: white;
 }

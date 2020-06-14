@@ -8,15 +8,14 @@
                     class="rounded-0 image-box"
                 ></b-card-img>
             </b-col>
-            <b-col md="6" class="text-left detail-text">
+            <b-col md="9" class="text-left detail-text">
                 <b-card-body :title="promotion.name">
+                    <b-card-text>{{promotion.description}}</b-card-text>
+
                     <b-card-text>
-                        {{promotion.description}}
+                        <router-link to="/">View wrestlers list</router-link>
                     </b-card-text>
                 </b-card-body>
-            </b-col>
-            <b-col md="3">
-                Shows list:
             </b-col>
         </b-row>
     </b-card>
@@ -27,9 +26,9 @@ export default {
     props: {
         promotion: {
             type: Object,
-            required: true,
+            required: true
         }
-    }
+    },
 };
 </script>
 
