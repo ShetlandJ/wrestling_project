@@ -13,6 +13,7 @@ use App\Models\WrestlingPromotion;
 use App\Http\Services\StateService;
 use App\Http\Services\WrestlerService;
 use App\Http\Services\PromotionService;
+use App\Models\ShowToPromotion;
 
 class SeederService {
     public function seedWrestlers()
@@ -72,6 +73,17 @@ class SeederService {
         $sethToWWE->wrestler_id = $seth->id;
         $sethToWWE->show_id = $raw->id;
         $sethToWWE->save();
+    }
+
+    public function seedShowsToPromotions()
+    {
+        $wwe = app(PromotionService::class)->findByAlias('WWE');
+        $raw = app(ShowService::class)->findByName('Raw');
+
+        $rawToWWE = new ShowToPromotion();
+        $rawToWWE->uuid = (string) Uuid::uuid4();
+        $rawToWWE->show_id = $raw->id;
+        $rawToWWE->promotion_id = $wwe->id;
     }
 
     public function seedStates()

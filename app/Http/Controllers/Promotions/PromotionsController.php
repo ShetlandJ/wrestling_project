@@ -25,5 +25,19 @@ class PromotionsController extends Controller
 
         return $this->toJson($message, Response::HTTP_OK);
     }
+
+    public function view(Request $request, $alias)
+    {
+        $promotion = app(PromotionService::class)->findByAlias($alias);
+
+        $message = [
+            'data' => [],
+        ];
+
+        array_push($message['data'], PromotionResource::create($promotion, $includeRelationships = true));
+
+
+        return $this->toJson($message, Response::HTTP_OK);
+    }
 }
 

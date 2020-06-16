@@ -1,20 +1,22 @@
 import axios from 'axios'
+import actions from './actions';
+import mutations from './mutations';
 
 axios.defaults.baseURL = 'http://localhost:8000/api'
 
 export default {
     namespaced: true,
     state: {
-        promotions: {
-            data: []
-        }
+        promotions: []
     },
     mutations: {
+        ...mutations,
         setPromotions(state, promotions) {
-            state.promotions.data = promotions.data
+            state.promotions = promotions.data
         },
     },
     actions: {
+        ...actions,
         getPromotions({ commit }) {
             return axios
                 .get('/promotions')
@@ -24,7 +26,7 @@ export default {
         },
     },
     getters: {
-        promotions: state => state.promotions.data,
-        findByAlias: state => name => state.promotions.data.find(record => record.alias.toLowerCase() === name.toLowerCase()) || {},
+        promotions: state => state.promotions,
+        findByAlias: state => name => state.promotions.find(record => record.alias.toLowerCase() === name.toLowerCase()) || {},
     }
 };

@@ -13,7 +13,9 @@
                     <b-card-text>{{promotion.description}}</b-card-text>
 
                     <b-card-text>
-                        <router-link to="/">View wrestlers list</router-link>
+                        <router-link
+                            :to="{ name: 'promotion.view', params: {alias: promotion.alias} }"
+                        >View wrestlers list</router-link>
                     </b-card-text>
                 </b-card-body>
             </b-col>
@@ -28,7 +30,7 @@ export default {
             type: Object,
             required: true
         }
-    },
+    }
 };
 </script>
 

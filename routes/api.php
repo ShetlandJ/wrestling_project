@@ -26,6 +26,7 @@ Route::prefix('auth')->group(function () {
 
 Route::namespace('Promotions')->prefix('promotions')->group(function () {
     Route::get('/', 'PromotionsController@index');
+    Route::get('/alias/{alias}', 'PromotionsController@view');
 });
 
 
